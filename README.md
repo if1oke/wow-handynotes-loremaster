@@ -12,10 +12,8 @@ Simply **hover a quest icon** on the world map, if it is part of a questline or 
 ⚠️**Required addon:** [HandyNotes](https://www.curseforge.com/wow/addons/handynotes "Visit CurseForge.com")
 
 Download available at:
-[CurseForge.com](https://www.curseforge.com/wow/addons/handynotes-loremaster/files "CurseForge Files"),
-[WoWInterface.com](https://www.wowinterface.com/downloads/info26628-HandyNotesLoremaster.html "WoWInterface"),
-[Wago.io](https://addons.wago.io/addons/wow-handynotes-loremaster/versions?stability=beta "Wago Releases (beta)") and
-[GitHub.com](https://github.com/erglo/wow-handynotes-loremaster/releases "GitHub Releases").  
+[CurseForge.com](https://www.curseforge.com/wow/addons/handynotes-loremaster-12-x-fork/files "CurseForge Files"),
+[GitHub.com](https://github.com/if1oke/wow-handynotes-loremaster/releases "GitHub Releases").  
 
 _(**Note:** This is a playable release. For some add-on hosting services or addon manager you might need to activate visibility for **beta** releases in order to find this addon.)_
 
@@ -33,7 +31,7 @@ _(**Note:** This is a playable release. For some add-on hosting services or addo
 
 ### Contributing
 
-If you have a feature request or if you would like to report a bug, please visit the repository's [issue page at GitHub](https://github.com/erglo/wow-handynotes-loremaster/issues).
+If you have a feature request or if you would like to report a bug, please visit the repository's [issue page at GitHub](https://github.com/if1oke/wow-handynotes-loremaster/issues).
 
 **Note:** Questlines will sometimes have multiple quests with the same name. _That is NOT a bug!!_ The game filters quests in background processes I don't have access to (or at least I haven't figured out how, yet), depending eg. on the player's class, race, faction group, etc. There are also quests which are obsolete but haven't been removed from the game, yet.  
 Currently, those quests need to be filtered manually. You're welcome to report those, especially if you know how to distinguish them.  
