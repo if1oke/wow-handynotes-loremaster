@@ -178,10 +178,12 @@ function LocalQuestInfo:GetQuestInfoForPin(pin)
     questInfo.isDaily = pin.isDaily or LocalQuestFilter:IsDaily(questInfo.questID, questInfo);
     questInfo.isFailed = C_QuestLog.IsFailed(questInfo.questID);                --> TODO - Check if these quests would be even visible on the map
     questInfo.isImportant = pin.isImportant or (classificationID and classificationID == Enum.QuestClassification.Important) or C_QuestLog.IsImportantQuest(questInfo.questID);
-    questInfo.isLegendary = pin.isLegendary or (classificationID and classificationID == Enum.QuestClassification.Legendary) or C_QuestLog.IsLegendaryQuest(questInfo.questID);
+    -- questInfo.isLegendary = pin.isLegendary or (classificationID and classificationID == Enum.QuestClassification.Legendary) or C_QuestLog.IsLegendaryQuest(questInfo.questID);
+    questInfo.isLegendary = pin.isLegendary or (classificationID and classificationID == Enum.QuestClassification.Legendary) or (C_QuestLog.IsLegendaryQuest and C_QuestLog.IsLegendaryQuest(questInfo.questID));
     questInfo.isOnQuest = pin.inProgress or C_QuestLog.IsOnQuest(questInfo.questID);
     questInfo.isReadyForTurnIn = self:ReadyForTurnIn(questInfo.questID);
-    questInfo.isRepeatable = (pin.IsRepeatableQuest and pin:IsRepeatableQuest()) or C_QuestLog.IsRepeatableQuest(questInfo.questID) or C_QuestLog.IsQuestRepeatableType(questInfo.questID);
+    -- questInfo.isRepeatable = (pin.IsRepeatableQuest and pin:IsRepeatableQuest()) or C_QuestLog.IsRepeatableQuest(questInfo.questID) or C_QuestLog.IsQuestRepeatableType(questInfo.questID);
+    questInfo.isRepeatable = (pin.IsRepeatableQuest and pin:IsRepeatableQuest()) or (C_QuestLog.IsRepeatableQuest and C_QuestLog.IsRepeatableQuest(questInfo.questID)) or (C_QuestLog.IsQuestRepeatableType and C_QuestLog.IsQuestRepeatableType(questInfo.questID));
     questInfo.isStory = questInfo.isStory or LocalQuestFilter:IsStory(questInfo.questID, questInfo);
     questInfo.isThreat = (classificationID and classificationID == Enum.QuestClassification.Threat) or (tagInfo and tagInfo.tagID == Enum.QuestTagType.Threat);
     questInfo.isTrivial = pin.isHidden or questInfo.isHidden or C_QuestLog.IsQuestTrivial(questInfo.questID);
@@ -209,7 +211,8 @@ local function AddMoreQuestInfo(questInfo)
     questInfo.isCalling = (classificationID and classificationID == Enum.QuestClassification.Calling) or (tagInfo and tagInfo.tagID == Enum.QuestTagType.CovenantCalling) or C_QuestLog.IsQuestCalling(questInfo.questID);
     questInfo.isCampaign = (questInfo.campaignID and questInfo.campaignID > 0) or (classificationID and classificationID == Enum.QuestClassification.Campaign) or C_CampaignInfo.IsCampaignQuest(questInfo.questID);
     questInfo.isImportant = (classificationID and classificationID == Enum.QuestClassification.Important) or C_QuestLog.IsImportantQuest(questInfo.questID);
-    questInfo.isLegendary = (classificationID and classificationID == Enum.QuestClassification.Legendary) or C_QuestLog.IsLegendaryQuest(questInfo.questID);
+    -- questInfo.isLegendary = (classificationID and classificationID == Enum.QuestClassification.Legendary) or C_QuestLog.IsLegendaryQuest(questInfo.questID);
+    questInfo.isLegendary = (classificationID and classificationID == Enum.QuestClassification.Legendary) or (C_QuestLog.IsLegendaryQuest and C_QuestLog.IsLegendaryQuest(questInfo.questID));
     questInfo.isOnQuest = C_QuestLog.IsOnQuest(questInfo.questID);
     questInfo.hasQuestLineInfo = (classificationID and classificationID == Enum.QuestClassification.Questline) or LocalQuestInfo:HasQuestLineInfo(questInfo.questID);
     questInfo.isReadyForTurnIn = LocalQuestInfo:ReadyForTurnIn(questInfo.questID);
@@ -224,7 +227,8 @@ local function AddMoreQuestInfo(questInfo)
     questInfo.questType = C_QuestLog.GetQuestType(questInfo.questID);
     -- Test
     questInfo.wasEarnedByMe = questInfo.isCompleted and not questInfo.isAccountCompleted;
-    questInfo.isRepeatable = C_QuestLog.IsRepeatableQuest(questInfo.questID) or C_QuestLog.IsQuestRepeatableType(questInfo.questID);
+    -- questInfo.isRepeatable = C_QuestLog.IsRepeatableQuest(questInfo.questID) or C_QuestLog.IsQuestRepeatableType(questInfo.questID);
+    questInfo.isRepeatable = (C_QuestLog.IsRepeatableQuest and C_QuestLog.IsRepeatableQuest(questInfo.questID)) or (C_QuestLog.IsQuestRepeatableType and C_QuestLog.IsQuestRepeatableType(questInfo.questID));
     questInfo.isBreadcrumbQuest = IsBreadcrumbQuest(questInfo.questID);
     questInfo.isSequenced = IsQuestSequenced(questInfo.questID);
     -- isInvasion = C_QuestLog.IsQuestInvasion(questID),
@@ -304,7 +308,8 @@ function LocalQuestInfo:GetQuestInfoForQuestEvents(questID)
     questInfo.hasQuestLineInfo = (classificationID and classificationID == Enum.QuestClassification.Questline) or LocalQuestInfo:HasQuestLineInfo(questInfo.questID);
     questInfo.isCampaign = (questInfo.campaignID and questInfo.campaignID > 0) or (classificationID and classificationID == Enum.QuestClassification.Campaign) or C_CampaignInfo.IsCampaignQuest(questInfo.questID);
     questInfo.isDaily = LocalQuestFilter:IsDaily(questInfo.questID, questInfo);
-    questInfo.isRepeatable = C_QuestLog.IsRepeatableQuest(questInfo.questID) or C_QuestLog.IsQuestRepeatableType(questInfo.questID);
+    -- questInfo.isRepeatable = C_QuestLog.IsRepeatableQuest(questInfo.questID) or C_QuestLog.IsQuestRepeatableType(questInfo.questID);
+    questInfo.isRepeatable = (C_QuestLog.IsRepeatableQuest and C_QuestLog.IsRepeatableQuest(questInfo.questID)) or (C_QuestLog.IsQuestRepeatableType and C_QuestLog.IsQuestRepeatableType(questInfo.questID));
     questInfo.isStory = questInfo.isStory or LocalQuestFilter:IsStory(questInfo.questID, questInfo);
     questInfo.isWeekly = LocalQuestFilter:IsWeekly(questInfo.questID, questInfo);
 

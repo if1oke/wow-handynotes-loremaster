@@ -1,4 +1,4 @@
-## Interface: 110002
+## Interface: 120001
 ## Title: HandyNotes: Loremaster
 ## Notes: Helps you keep track of the Loremaster zone story achievements as well as campaigns and questlines.
 ## Notes-deDE: Hilft euch die "Meister der Lehren" Erfolge sowie Kampagnen und Questreihen im Blick zu behalten.
